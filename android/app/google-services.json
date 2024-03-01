@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "58271761420",
+    "project_id": "flutter-nilium",
+    "storage_bucket": "flutter-nilium.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58271761420:android:0989d78126276537511a29",
+        "android_client_info": {
+          "package_name": "com.example.nilium"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYOXijr-QI-fC6oQyfd6rqp1OR0w2AFpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

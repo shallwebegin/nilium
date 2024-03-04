@@ -39,11 +39,14 @@ dependencies:
   # Flutter Riverpod
   flutter_riverpod: ^2.4.10
   # Kartal
-  kartal: ^3.5.0
+  kartal: ^2.8.0
   #Firebase
   cloud_firestore: ^4.15.6
   firebase_core: ^2.25.5
+  #equatable
   equatable: ^2.0.5
+  #animated_text_kit
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +72,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icon/ic_microphone.png
+    - assets/icon/ic_splash_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

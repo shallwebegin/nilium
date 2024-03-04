@@ -7,3 +7,13 @@ class FirebaseCustuomException implements Exception {
     return '$this $description';
   }
 }
+
+class VersionCustuomException implements Exception {
+  VersionCustuomException(this.description);
+
+  final String description;
+  @override
+  String toString() {
+    return '$this $description';
+  }
+}

@@ -4,6 +4,7 @@ import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/material.dart';
 
 import 'package:nilium/firebase_options.dart';
+import 'package:nilium/product/initialize/app_cache.dart';
 
 @immutable
 class ApplicationStart {
@@ -17,5 +18,6 @@ class ApplicationStart {
     FirebaseUIAuth.configureProviders(
       [EmailAuthProvider(), GoogleProvider(clientId: '')],
     );
+    await AppCache.instance.setup();
   }
 }

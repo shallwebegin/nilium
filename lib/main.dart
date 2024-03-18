@@ -4,6 +4,7 @@ import 'package:nilium/feature/auth/authentication_view.dart';
 
 import 'package:nilium/product/constants/string_constants.dart';
 import 'package:nilium/product/initialize/app_start_init.dart';
+import 'package:nilium/product/initialize/app_theme.dart';
 
 Future<void> main() async {
   await ApplicationStart.init();
@@ -18,10 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: StringConstants.appName,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme(context).theme,
       home: const AuthenticationView(),
     );
   }

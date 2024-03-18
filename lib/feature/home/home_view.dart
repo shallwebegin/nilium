@@ -1,7 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars, unnecessary_null_comparison
 
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:nilium/product/models/news.dart';
 import 'package:nilium/product/utility/exception/custom_exception.dart';
 

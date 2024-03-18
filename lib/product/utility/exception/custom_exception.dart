@@ -1,17 +1,30 @@
-class FirebaseCustuomException implements Exception {
-  FirebaseCustuomException(this.description);
+class FirebaseCustomException implements Exception {
+  FirebaseCustomException(this.description);
 
   final String description;
+
   @override
   String toString() {
     return '$this $description';
   }
 }
 
-class VersionCustuomException implements Exception {
-  VersionCustuomException(this.description);
+class VersionCustomException implements Exception {
+  VersionCustomException(this.description);
 
   final String description;
+
+  @override
+  String toString() {
+    return '$this $description';
+  }
+}
+
+class PlatformCustomException implements Exception {
+  PlatformCustomException(this.description);
+
+  final String description;
+
   @override
   String toString() {
     return '$this $description';

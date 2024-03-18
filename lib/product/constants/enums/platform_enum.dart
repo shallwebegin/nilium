@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:nilium/product/utility/exception/custom_exception.dart';
+
 enum PlatformEnum {
   android,
   ios;
@@ -12,6 +14,6 @@ enum PlatformEnum {
       return PlatformEnum.android.name;
     }
 
-    throw Exception('Platform unused please check');
+    throw PlatformCustomException('Platform unused please check!');
   }
 }

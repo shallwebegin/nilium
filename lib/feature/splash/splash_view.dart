@@ -1,22 +1,23 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kartal/kartal.dart';
 import 'package:nilium/feature/home/home_view.dart';
 import 'package:nilium/feature/splash/splash_provider.dart';
 import 'package:nilium/product/constants/color_constants.dart';
+import 'package:nilium/product/constants/enums/image_constants.dart';
 import 'package:nilium/product/constants/string_constants.dart';
-import 'package:nilium/product/enums/image_constants.dart';
 import 'package:nilium/product/widget/text/wavy_text.dart';
 
 class SplashView extends ConsumerStatefulWidget {
-  const SplashView({Key? key}) : super(key: key);
+  const SplashView({super.key});
 
   @override
-  ConsumerState<SplashView> createState() => _SplashViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SplashViewState();
 }
 
 class _SplashViewState extends ConsumerState<SplashView>
-    with _SplashWievListenMixin {
+    with _SplashViewListenMixin {
   final splashProvider =
       StateNotifierProvider<SplashProvider, SplashState>((ref) {
     return SplashProvider();
@@ -25,23 +26,23 @@ class _SplashViewState extends ConsumerState<SplashView>
   @override
   void initState() {
     super.initState();
-    ref.read(splashProvider.notifier).checkApplicationVersion(''.version);
+    ref.read(splashProvider.notifier).checkApplicationVersion('');
   }
 
   @override
   Widget build(BuildContext context) {
     listenAndNavigate(splashProvider);
     return Scaffold(
-      backgroundColor: ColorConstants.purpleDark,
+      backgroundColor: ColorConstants.purplePrimary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconConstants.splashLogo.toImage,
+            IconConstants.appIcon.toImage,
             Padding(
-              padding: context.paddingHigh,
-              child: WavyBoldText(title: StringConstants.appName),
-            ),
+              padding: const EdgeInsets.all(8),
+              child: const WavyText(title: StringConstants.appName),
+            )
           ],
         ),
       ),
@@ -49,22 +50,26 @@ class _SplashViewState extends ConsumerState<SplashView>
   }
 }
 
-mixin _SplashWievListenMixin on ConsumerState<SplashView> {
+mixin _SplashViewListenMixin on ConsumerState<SplashView> {
   void listenAndNavigate(
       StateNotifierProvider<SplashProvider, SplashState> provider) {
-    ref.listen(
-      provider,
-      (previous, next) {
-        if (next.isRequiredForceUpdate ?? false) {
-          showAboutDialog(context: context);
-          return;
+    ref.listen(provider, (previous, next) {
+      if (next.isRequiredForceUpdate ?? false) {
+        showAboutDialog(context: context);
+        return;
+      }
+
+      if (next.isRedirectHome != null) {
+        if (next.isRedirectHome!) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => HomeView(),
+            ),
+          );
+        } else {
+          //false
         }
-        if (next.isRedirectHome != null) {
-          if (next.isRedirectHome!) {
-            context.navigateToPage(const HomeView());
-          } else {}
-        }
-      },
-    );
+      }
+    });
   }
 }

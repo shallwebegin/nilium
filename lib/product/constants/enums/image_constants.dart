@@ -1,10 +1,9 @@
 // ignore_for_file: sort_constructors_first
-
 import 'package:flutter/material.dart';
 
 enum IconConstants {
   microphone('microphone'),
-  splashLogo('splash_logo');
+  appIcon('app_logo');
 
   final String value;
   const IconConstants(this.value);

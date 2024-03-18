@@ -1,19 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nilium/product/enums/platform_enum.dart';
-import 'package:nilium/product/model/number_model.dart';
-import 'package:nilium/product/utility/firebase/firebase_collection.dart';
+import 'package:nilium/product/constants/enums/platform_enum.dart';
+import 'package:nilium/product/models/number_model.dart';
+import 'package:nilium/product/utility/firebase/firebase_collections.dart';
 import 'package:nilium/product/utility/version_manager.dart';
 
 class SplashProvider extends StateNotifier<SplashState> {
   SplashProvider() : super(const SplashState());
-
   Future<void> checkApplicationVersion(String clientVersion) async {
     final databaseValue = await getVersionNumberFromDatabase();
-
     if (databaseValue == null || databaseValue.isEmpty) {
       state = state.copyWith(isRedirectHome: false);
       return;
@@ -28,11 +24,10 @@ class SplashProvider extends StateNotifier<SplashState> {
       state = state.copyWith(isRequiredForceUpdate: true);
       return;
     }
-
     state = state.copyWith(isRedirectHome: true);
   }
 
-  // If user coming from browser, we dont need to check version control
+  // If user coming from browser, we dont need to check version control.
   Future<String?> getVersionNumberFromDatabase() async {
     if (kIsWeb) return null;
 
@@ -50,10 +45,7 @@ class SplashProvider extends StateNotifier<SplashState> {
 }
 
 class SplashState extends Equatable {
-  const SplashState({
-    this.isRequiredForceUpdate,
-    this.isRedirectHome,
-  });
+  const SplashState({this.isRequiredForceUpdate, this.isRedirectHome});
 
   final bool? isRequiredForceUpdate;
   final bool? isRedirectHome;
@@ -61,10 +53,7 @@ class SplashState extends Equatable {
   @override
   List<Object?> get props => [isRequiredForceUpdate, isRedirectHome];
 
-  SplashState copyWith({
-    bool? isRequiredForceUpdate,
-    bool? isRedirectHome,
-  }) {
+  SplashState copyWith({bool? isRequiredForceUpdate, bool? isRedirectHome}) {
     return SplashState(
       isRequiredForceUpdate:
           isRequiredForceUpdate ?? this.isRequiredForceUpdate,

@@ -11,9 +11,11 @@ mixin BaseFirebaseModel<T extends IdModel> {
   T fromFirebase(DocumentSnapshot<Map<String, dynamic>> snapshot) {
     final value = snapshot.data();
     if (value == null) {
-      throw FirebaseCustuomException('$snapshot data is null');
+      throw FirebaseCustomException('$snapshot data is null');
     }
+    //fix me
     value.addEntries([MapEntry('id', snapshot.id)]);
+
     return fromJson(value);
   }
 }

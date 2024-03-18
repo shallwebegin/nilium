@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 import 'package:nilium/product/utility/base/base_firebase_model.dart';
 
 class News extends Equatable with IdModel, BaseFirebaseModel<News> {

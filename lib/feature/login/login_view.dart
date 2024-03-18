@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nilium/feature/login/login_provider.dart';
+import 'package:nilium/feature/login/login_view_provider.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -14,7 +14,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Text(
-        ref.watch(loginProvider).toString(),
+        ref.watch(loginProvider.notifier).toString(),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nilium/feature/auth/authentication_view.dart';
+import 'package:nilium/feature/home/home_view.dart';
 
 import 'package:nilium/product/constants/string_constants.dart';
 import 'package:nilium/product/initialize/app_start_init.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: StringConstants.appName,
       theme: AppTheme(context).theme,
-      home: const AuthenticationView(),
+      home: HomeView(),
     );
   }
 }
